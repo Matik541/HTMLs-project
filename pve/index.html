@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<meta charset="UTF-8" />
+	<title>PvE</title>
+	<style>
+		body,
+		html {
+			background-color: #333;
+			color: #fff;
+		}
+
+		#board {
+			position: absolute;
+			transform: translate(-50%, -50%);
+			top: 50%;
+			left: 50%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		.row {
+			display: flex;
+		}
+
+		.tile {
+			width: 15vmin;
+			height: 15vmin;
+			border: 1px solid red;
+		}
+
+		.row:hover .tile {
+			background-color: #fff8;
+		}
+
+		.row .tile:hover~.tile {
+			background-color: #fff8;
+		}
+
+		.row .tile:hover {
+			background: #fff4;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="board"></div>
+	<script>
+		const height = 5, width = 10, fps = 50;
+		var i = 0, 
+		played = {
+			level: 0,
+		};
+
+		function que(selector) {
+			return document.querySelectorAll(selector);
+		}
+
+		function random(min, max) {
+			min = Math.ceil(min);
+			max = Math.floor(max);
+			return Math.floor(Math.random() * (max - min)) + min;
+		}
+
+		class Enemy {
+			row = 0;
+			hp = 10;
+			speed = 1;
+			dmg = 1; // perHit
+			def = []; // [{type:'', procent:0},]
+			constructor(hp = 1, speed = 1, dmg = 1, def = [{ type: '', procent: 0 }], row = [0, height]) {
+				this.hp = hp;
+				this.speed = speed;
+				this.dmg = dmg;
+				this.row = row;
+				this.def = def;
+				this.row = random(row[0], row[1]);
+			}
+		}
+
+		class Wave {
+			enemies = [];
+			timeout = 10; // s/10
+			constructor(enemies = [Enemy], timeout = 0) {
+				this.enemies = enemies;
+				this.timeout = timeout;
+			}
+		}
+
+		class Level {
+			name = ''
+			waves = [];
+			constructor(name = 'Day X', waves = []) {
+				this.name = name;
+				this.waves = waves;
+			}
+		}
+
+		enemies = new Map();
+		enemies.set('dummy', new Enemy(10, 0.1, 1, []));
+		enemies.set('fireman', new Enemy(20, 5, 2, ['fire', 50]));
+
+		var level = [];
+		level[0] = new Level(
+			"Tutorial",
+			new Wave(
+				[
+					[enemies.get('dummy'), 10],
+					[enemies.get('fireman'), 40]
+				],
+				10
+			)
+		);
+		for (let y = 0; y < height; y++) {
+			que('#board')[0].innerHTML += `<div class="row" id=${y} ></div>`
+			for (let x = 0; x < width; x++) {
+				que('#board')[0].children[y].innerHTML += `<div class="tile ${x}" style="background-image: url()" id=${x + '-' + y}></div>`
+			}
+		}
+		function play() {
+			console.log(level[played.level]);
+		}
+		play();
+		// var playing = setInterval(play, 1000/fps);
+		</script>
+</body>
+
+</html>

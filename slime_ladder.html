@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Slimy i Drabiny</title>
+  <style>
+    :root {
+      --size: 4vw;
+    }
+
+    @media only screen and (max-width: 100vh) {
+      :root {
+        --size: 4vh;
+      }
+    }
+
+    body,
+    html {
+      background-color: #333;
+      color: #fff;
+    }
+
+    #board {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: grid;
+      grid-template-columns: repeat(10, var(--size));
+      grid-template-rows: repeat(10, var(--size));
+      font-size: calc(var(--size) / 3);
+      text-align: center;
+    }
+
+    #arrows {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+
+
+    .tile {
+      width: var(--size);
+      height: var(--size);
+      background-color: red;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="board">
+  </div>
+  <canvas id="arrows">
+  </canvas>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+
+    function get(ths) {
+      console.log(board[parseInt(ths.id.slice(4))])
+    }
+
+    class Tile {
+      num = 0
+      obj = undefined
+      boost = null
+      boosted = false
+      constructor(num, element) {
+        this.num = num
+        this.obj = element
+      }
+      setBoost(where) {
+        let what = 'slime';
+        if (where > this.num) { what = 'ladder' }
+        this.boost = [what, where];
+      }
+    }
+
+    var board = [], fill = [];
+    board.length = 100
+    for (let l = 0; l < 100; l++) {
+      let num = 100 - l, arrows = ['🡰', '🡱', '🡲', '🏁'], arrow = 0;
+
+      if (parseInt(l / 10) % 2 == 1) { num = l % 10 + 91 - parseInt(l / 10) * 10; arrow = 2; }
+      if (num % 10 == 0) { arrow = 1 }
+      if (num == 100) { arrow = 3 }
+
+      $('#board')[0].innerHTML += `<div id="tile${num}" class="tile num${l}" onclick="get(this)">${arrows[arrow]}<br>${num}</div>`
+      board[num] = (new Tile(num, $(`#tile${num}`)[0]))
+    }
+
+    let boosted = []
+    for (let boosts = 10; boosts > 0; true) {
+      let tile = Math.floor(Math.random() * 97) + 2, where = Math.floor(Math.random() * 97) + 2;
+      if (tile != where && board[tile].boost == null && board[where].boost == null && parseInt(tile / 10) != parseInt(where / 10) && board[where].boosted == false && board[tile].boosted == false) {
+        board[tile].setBoost(where);
+        board[where].boosted = true;
+        boosted.push(board[tile])
+        boosts--
+      }
+    }
+
+    function draw() {
+      let c = $('#arrows')[0]
+      c.width = $('#board')[0].offsetWidth
+      c.height = $('#board')[0].offsetHeight
+
+      var ctx = c.getContext('2d');
+      boosted.forEach((v, k) => {
+        $('#tile' + v.num)[0].style.backgroundColor = `rgb( 90, ${255 - 25 * k}, ${25 * k})`;
+        $('#tile' + v.boost[1])[0].style.backgroundColor = `rgb( 100, ${255 - 25 * k}, ${25 * k})`;
+
+        let numWhere = parseInt($('#tile' + v.boost[1])[0].classList[1].slice(3))
+        let num = parseInt(v.obj.classList[1].slice(3))
+
+        ctx.beginPath()
+        // ctx.moveTo(parseInt(numWhere / 10) * $('.tile')[0].offsetWidth, numWhere % 10 * $('.tile')[0].offsetHeight)
+        console.log(parseInt(numWhere / 10), numWhere % 10)
+        let tox = (numWhere % 10) * $('.tile')[0].offsetWidth + ($('.tile')[0].offsetWidth / 2),
+          toy = parseInt(numWhere / 10) * $('.tile')[0].offsetHeight + ($('.tile')[0].offsetHeight / 2),
+          fromx = (num % 10) * $('.tile')[0].offsetWidth + ($('.tile')[0].offsetWidth / 2),
+          fromy = parseInt(num / 10) * $('.tile')[0].offsetHeight + ($('.tile')[0].offsetWidth / 2),
+          dx = tox - fromx,
+          dy = toy - fromy,
+          headlen = 25,
+          angle = Math.atan2(dy, dx);
+        ctx.lineWidth = 2.5
+        ctx.moveTo(fromx, fromy);
+        ctx.lineTo(tox, toy);
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.moveTo(tox - headlen * Math.cos(angle - Math.PI / 6), toy - headlen * Math.sin(angle - Math.PI / 6));
+        ctx.lineTo(tox, toy);
+        ctx.moveTo(tox - headlen * Math.cos(angle + Math.PI / 6), toy - headlen * Math.sin(angle + Math.PI / 6));
+        ctx.lineTo(tox, toy);
+        ctx.closePath()
+        ctx.stroke()
+      })
+    }
+    draw()
+    window.addEventListener('resize', draw)
+
+  </script>
+</body>
+
+</html>

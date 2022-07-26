@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Neko memory</title>
+    <style>
+        body {
+            background-color: #444;
+        }
+
+        #grid {
+            display: grid;
+            grid-template-columns: repeat(10, 6rem);
+            grid-template-rows: repeat(10, 6rem);
+        }
+
+        .tile {
+            background-color: rgb(255, 255, 255);
+            border-radius: .5rem;
+            width: 5.5rem;
+            height: 5.5rem;
+            margin: .25rem;
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-clip: border-box;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="grid">
+    </div>
+    Score: <span id="pkt"></span>
+    <select id="lvl" onchange="setlvl()">
+        <optgroup label="Easy">
+            <option value="2"> 2x2</option>
+            <option value="4"> 4x4</option>
+            <option value="6"> 6x6</option>
+        </optgroup>
+        <optgroup label="Normal">
+            <option value="8"> 8x8</option>
+            <option value="10"> 10x10</option>
+            <option value="12"> 12x12</option>
+        </optgroup>
+        <optgroup label="Hard"> 
+            <option value="14"> 14x14</option>
+            <option value="16"> 16x16</option>
+            <option value="18"> 18x18</option>
+        </optgroup>
+    </select>
+    <script>
+        Array.prototype.remove = function () {
+            var what, a = arguments, L = a.length, ax;
+            while (L && this.length) {
+                what = a[--L];
+                while ((ax = this.indexOf(what)) !== -1) {
+                    this.splice(ax, 1);
+                }
+            }
+            return this;
+        };
+
+        function getID(id) {
+            return document.getElementById(id)
+        }
+        function Tile(i, l) {
+            this.id = i;
+            this.value = "";
+            this.pos = () => { return document.getElementById(i + '-' + l) };
+        }
+
+        var items = [
+            "https://media.discordapp.net/attachments/472313197836107780/571090810372882442/BVpgnJA.png",
+            "https://media.discordapp.net/attachments/472313197836107780/571090819671654440/DOWRnvt.png",
+            "https://imgur.com/QCbChoR.png",
+            "https://imgur.com/3phgmSN.png",
+            "https://imgur.com/oBvfYP7.png",
+            "https://imgur.com/2xddQaB.png",
+            "https://imgur.com/zjC3bno.png",
+            "https://imgur.com/Tne6rqe.png",
+            "https://imgur.com/QhJtw82.png",
+            "https://media.discordapp.net/attachments/472313197836107780/620506437428314122/rVTBQST.png",
+            "https://media.discordapp.net/attachments/472313197836107780/547222705880170496/tMhDSXY.png",
+            "https://media.discordapp.net/attachments/472313197836107780/548375348895809544/tqWK6iw.png",
+            "https://media.discordapp.net/attachments/472313197836107780/571154699777212428/5nnSDDd.png",
+            "https://media.discordapp.net/attachments/472313197836107780/571154764470157343/urrPHGn.png",
+            "https://imgur.com/wpV1IPz.png",
+            "https://media.discordapp.net/attachments/472313197836107780/700478865809604649/3YqPf1g.png",
+            "https://media.discordapp.net/attachments/472313197836107780/620043995032322100/7ZV138B.png",
+            "https://media.discordapp.net/attachments/472313197836107780/620044019837173760/9zkfWsD.png",
+            "https://media.discordapp.net/attachments/472313197836107780/620044037201854474/jb43Uc1.png",
+            "https://media.discordapp.net/attachments/472313197836107780/620044109775634433/RLGQgd9.png",
+            "https://imgur.com/wvpwmEr.png",
+            "https://media.discordapp.net/attachments/472313197836107780/747591157567062086/znF9FjW.png",
+            "https://imgur.com/6UO1F7e.png",
+            "https://media.discordapp.net/attachments/472313197836107780/606720537095438336/IJgvAxH.png",
+            "https://imgur.com/qQhavl8.png",
+            "https://i0.nekobot.xyz/2/8/4/f67742d418a9355b87a30229e621b.png",
+            "https://cdn.nekobot.xyz/f/6/9/25840d8020024659954d1ccd44b76.png",
+            "https://i0.nekobot.xyz/0/1/9/d91988614d79126f545f822e12298.jpg",
+            "https://i0.nekobot.xyz/8/2/6/96c6f21e35324f0f92fe729742849.jpg",
+            "https://cdn.nekobot.xyz/e/f/9/75cf117e13dd62064a7f270a6b4c0.png",
+            "https://cdn.nekobot.xyz/c/4/1/5132ff989631741e10aaa3c9fe669.jpg",
+            "https://images-ext-1.discordapp.net/external/zPHZynt5r1cfJ97mG11EfqSYbq5ERWoBhES-k4ki8ak/https/i0.nekobot.xyz/6/0/8/bb1e2dd6449a92f9d840cf0ab2b31.jpg?width=483&height=676",
+            "https://cdn.nekobot.xyz/9/f/2/c289385265359e6992d8d6eb821fd.jpg",
+            "https://i0.nekobot.xyz/5/8/6/e787963b127a5a3cae1eed3f08759.jpeg",
+            "https://i0.nekobot.xyz/2/d/8/b81c186f903b48c9b13d9de396434.jpg",
+            "https://i0.nekobot.xyz/1/a/d/33127ee46913e1d93bf6bc4d9919a.png",
+            "https://images-ext-1.discordapp.net/external/534DBub3Qah68X_tIGvE0Ip1vxg9rI1gQSc_K6XF_bA/https/i0.nekobot.xyz/6/5/7/f427e6100196f9141b924f071c8ff.jpg?width=506&height=675",
+            "https://cdn.nekobot.xyz/c/d/1/3b53e4d404d40efd3e21765aa1227.jpg",
+            "https://cdn.nekobot.xyz/d/3/b/5a68cf524f500211f3886a4051e7a.png",
+            "https://imgur.com/kCS5KGy.png"
+        ]
+
+        var lvl = getID('lvl').value
+        function setlvl(){
+            lvl = getID('lvl').value
+            play (lvl)
+        }
+
+        play(lvl)
+        var grid, memory;
+        function play(lvl) {
+            getID('grid').innerHTML = ''
+
+            getID('grid').style.gridTemplateColumns = "repeat(" + lvl + ", 6rem)"
+            getID('grid').style.gridTemplateRows = "repeat(" + lvl + ", 6rem)"
+
+            grid = [];
+            for (let i = 0; i < lvl*lvl; i++) {
+                grid.push(new Tile(i))
+            }
+
+            memory = []
+            for (let l = 0; l < (lvl * lvl); l += 2) {
+                let r = Math.floor(Math.random() * items.length)
+
+                grid[l].value = items[r]
+                grid[l + 1].value = items[r]
+                memory.push(grid[l])
+                memory.push(grid[l + 1])
+                items.remove(items[r])
+            }
+
+            grid = grid.sort(() => Math.random() - 0.5);
+            for (let l = 0; l < lvl * lvl; l++) {
+                getID('grid').innerHTML += '<div class="tile" id="' + grid[l].id + '" onclick="check(this)"></div>'
+            }
+        }
+
+        var click = 0, value0, value1, point = 0, was = [];
+        function check(x) {
+            x.style.backgroundImage = "url(" + memory[x.id].value +")"
+            if (was.includes(x)) { return; }
+            if (click == 0) {
+                value0 = x
+                click += 1
+                return;
+            }
+            if (value0 === x) { return; }
+            value1 = x
+            if (memory[value0.id].value == memory[value1.id].value) {
+
+                point++
+                getID('pkt').innerText = point + "/" + lvl * lvl / 2
+                value0.style.opacity = 0;
+                value1.style.opacity = 0;
+                was.push(value0)
+                was.push(value1)
+
+                if (point == lvl * lvl / 2) {
+                    setTimeout(() => {
+                        if (confirm('WIN!\nPlay again?')) { window.open("./memory.html", "_self") }
+                    }, 1000)
+                }
+            }
+            else {
+                let [v0, v1] = [value0, value1]
+                setTimeout(() => {
+                    v0.style.backgroundImage = "";
+                    v1.style.backgroundImage = "";
+                }, 1000)
+            }
+            click = 0
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,193 @@
+body{
+    background-image: url(https://cdn.statically.io/img/wallpapercave.com/wp/wp2757874.gif);
+    background-color: #16171c;
+    background-size: 100%;
+    background-position: 50%;
+    color: #ffffff;
+}
+input{
+    border: none;
+}
+select{
+    white-space: nowrap;
+    border-radius: 2px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+option{
+    background-color: #16171c;
+    border: none;
+}
+.input{
+    background-color: #00000000;
+    font-size: 18px;
+    margin: 5px;
+    padding: 1px;
+    border: none;
+    color: white;
+}
+.player{
+    border-radius: 100px;
+    width: 10px;
+    height: 100px;
+    background-color: white;
+}
+.tops{
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 13px 13px 0px 0px ;
+    border: #ffffff 5px solid;
+    border-bottom: none;
+    text-align: center;
+    font-size: 25px;
+    font-family: sans-serif;
+    width: 230px;
+    height: 28px;
+    padding: 10px;
+}
+#top{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 70px;
+    display: grid;
+    text-align: center;
+    width: 975px;
+    grid-template-columns: 325px 325px 325px;
+}
+#playground{
+    background-color: #00000044;
+    width: 1000px;
+    height: 700px;
+    border-radius: 13px;
+    border: #ffffff 5px solid;
+    margin-left: auto;
+    margin-right: auto;
+}
+#p1{
+    float: left;
+    margin-left: 20px;
+    margin-top: 300px;
+    box-shadow: inset blue 1px 1px 4px, inset blue -1px 1px 4px, inset  -1px -1px 4px, inset blue 1px -1px 4px ;
+}
+#p2{
+    float: right;
+    margin-right: 20px;
+    margin-top: 300px;
+    box-shadow: inset red 1px 1px 4px, inset red -1px 1px 4px, inset red -1px -1px 4px, inset red 1px -1px 4px ;
+}
+#ball{
+    width: 20px;
+    height: 20px;
+    border-radius: 100px;
+    background-color: white;
+    margin-left: 490px;
+    margin-top: 340px;
+}  
+#info{
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 0px 0px 13px 13px;
+    border: #ffffff 5px solid;
+    border-top: none;
+    text-align: center;
+    font-size: 20px;
+    font-family: sans-serif;
+    width: 675px;
+    height: 20px;
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 225px 225px 225px;
+}   
+#panel{
+    top: 250px;
+    left: 50%;
+    margin-left: -250px;
+    position: absolute;
+    text-align: center;
+    font-size: 20px;
+    font-family: sans-serif;
+}
+#win{
+    background-color: #00000088;
+    margin: 5px;
+    width: 480px;
+    height: 200px;
+    border-radius: 13px;
+    border: #1c1c 5px solid;
+    padding: 5px;
+    display: grid;
+}
+#lose{
+    background-color: #00000088;
+    margin: 5px;
+    width: 480px;
+    height: 200px;
+    border-radius: 13px;
+    border: #c11 5px solid;
+    padding: 5px;
+    display: grid;
+}
+#tie{
+    background-color: #00000088;
+    margin: 5px;
+    width: 480px;
+    height: 200px;
+    border-radius: 13px;
+    border: #ff1 5px solid;
+    padding: 5px;
+    display: block;
+}
+#settings{
+    background-color: #00000088;
+    border-radius: 13px;
+    border: #ffffff 5px solid;
+    width: 480px;
+    height: 60px;
+    padding: 5px;
+    bottom: 0px;
+    margin: 5px;
+    margin-left: auto;
+    margin-right: auto;
+} 
+#AI{
+    background-color: #00000088;
+    border-radius: 13px;
+    border: #ffffff 5px solid;
+    width: 480px;
+    height: 30px;
+    padding: 5px;
+    bottom: 0px;
+    margin: 5px;
+    margin-left: auto;
+    margin-right: auto;
+} 
+#start{
+    float: inline-end;
+    animation: breath 2s infinite;
+}
+@keyframes show{
+    0%{
+        opacity: 0;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes hide{
+    100%{
+        opacity: 0;
+    }
+    0%{
+        opacity: 1;
+    }
+}
+@keyframes breath{
+    0%{
+        opacity: 1;
+    }
+    50%{
+        opacity: 0.25;
+    }
+    100%{
+        opacity: 1;
+    }
+}

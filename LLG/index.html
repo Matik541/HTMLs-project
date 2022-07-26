@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Loli licence generator</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Quantico&display=swap');
+
+    :root {
+      --size: 1vmin;
+    }
+
+    * {
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body,
+    html {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      background-color: #333;
+      color: #fff;
+    }
+
+    #card {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      position: absolute;
+      background-color: #000;
+      width: calc(var(--size) * 86);
+      height: calc(var(--size) * 54);
+      border-radius: calc(var(--size) * 5.4);
+      padding-top: calc(var(--size) * 5.4);
+      padding-bottom: calc(var(--size) * 5.4 * 1.5);
+      font-size: calc(var(--size) * 2.75);
+      font-family: 'Quantico', sans-serif;
+
+    }
+
+    #card::after {
+      content: "LICENCE TO HAVE LOLI";
+      color: #fff;
+      display: block;
+      position: relative;
+      font-size: calc(var(--size) * 5);
+      text-align: center;
+    }
+
+    .card_inner {
+      background-color: #fff;
+      color: #000;
+      width: 100%;
+      height: 100%;
+      display: grid;
+      grid-template-columns: 60% 40%;
+    }
+
+    .card_content h1 {
+      width: fit-content;
+      position: relative;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
+    .card_content .main {
+      display: grid;
+      position: relative;
+      left: 30%;
+      bottom: -5%;
+    }
+
+    .card_content #date {
+      position: relative;
+      bottom: -10%;
+      left: 30%;
+    }
+
+    .card_content #date div {
+      width: min-content;
+    }
+
+    .card_content #date div h3 {
+      font-size: 1.5em;
+    }
+
+    .card_content #date div input {
+      width: 5ch;
+    }
+
+    .card_content #sim {
+      width: 4em;
+      height: auto;
+      position: absolute;
+      top: 40%;
+      left: 2.5%;
+      transform: translateY(-50%) rotate(-90deg);
+    }
+
+    .card_content .footer {
+      display: flex;
+      justify-content: flex-start;
+      position: absolute;
+      bottom: 15%;
+      left: 2.5%;
+    }
+
+    #img,
+    #image {
+      position: relative;
+      height: 100%;
+      background-color: #000;
+      border: none;
+      color: #fff;
+    }
+
+    #image {
+      overflow: hidden;
+      border: 1px solid black;
+    }
+
+    #image label {
+      width: 100%;
+      height: 100%;
+    }
+
+    #image label::after {
+      top: -1.4em;
+      position: relative;
+      content: "Choose your loli";
+      color: #fff;
+      display: grid;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-items: center;
+    }
+
+    .settings {
+      background-color: #888;
+      position: absolute;
+      display: none;
+      place-items: center;
+      padding: 0.25em
+    }
+
+    .settings.bottom {
+      top: 0;
+      margin-top: .2em;
+    }
+
+    .settings.left {
+      margin-top: -1.5em;
+      left: 50%;
+      width: min-content;
+    }
+
+    .settings.left input,
+    .settings.left select {
+      width: 8ch;
+    }
+
+    .settings.ontext {
+      top: -1.5em;
+    }
+
+    .settings.bottom::after {
+      transform: translate(-50%);
+      content: "";
+      display: block;
+      position: absolute;
+      left: 50%;
+      bottom: -.45em;
+      border-left: .5em solid transparent;
+      border-right: .5em solid transparent;
+      border-top: .5em solid #888;
+    }
+
+    .settings.left::after {
+      transform: translate(0, -50%);
+      content: "";
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: -.45em;
+      border-top: .5em solid transparent;
+      border-bottom: .5em solid transparent;
+      border-right: .5em solid #888;
+    }
+
+    .inputs:hover .settings {
+      display: flex;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <div id="card">
+      <div class="card_inner">
+        <div class="card_content">
+          <h1>FBI</h1>
+
+          <img src="sim.jpg" id="sim">
+
+          <div class="main">
+            <div class="inputs">
+              ADMIN: {{adm}}
+              <div class="settings left">
+                <input type="text" id="adm" v-model="adm">
+              </div>
+            </div>
+            <div class="inputs">
+              SECURITY: L{{lvl}}
+              <div class="settings left">
+                <select id="sec" v-model="lvl">
+                  <optgroup label="Security">
+                    <option value="5">L5</option>
+                    <option value="4">L4</option>
+                    <option value="3">L3</option>
+                    <option value="2">L2</option>
+                    <option value="1">L1</option>
+                  </optgroup>
+                </select>
+              </div>
+            </div>
+            <div class="inputs">
+              CLASS: {{clas}}
+              <div class="settings left">
+                <select id="class" v-model="clas">
+                  <optgroup label="Class">
+                    <option value="SS">SS</option>
+                    <option value="S">S</option>
+                    <option value="A">A</option>
+                    <option value="B">B</option>
+                    <option value="C">C</option>
+                    <option value="D">D</option>
+                    <option value="E">E</option>
+                    <option value="F">F</option>
+                  </optgroup>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="inputs" id="date">
+            <div>
+              <h3>{{month}}/{{year}}</h3>
+            </div>
+            <div class="settings bottom ontext" style="top: -2em;">
+              <input type="number" placeholder="1-12" id="month" v-model="month">/<input type="number" id="year"
+                v-model="year">
+            </div>
+          </div>
+
+          <div class="footer">
+            <div class="inputs" style="margin-right: 1ch;">
+              H {{code}}
+              <div class="settings bottom ontext">
+                <input style="width: 9ch;" type="number" title="hentai code :>" placeholder="H 000000" id="code"
+                  v-model="code">
+              </div>
+            </div>
+            <div class="inputs">
+              OWNER: {{owner}}
+              <div class="settings bottom ontext">
+                <input type="text" placeholder="owner:" id="owner" v-model="owner">
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="inputs" id="image" title="Chopse your loli">
+          <label @change="image">
+            <input style="display: none;" type="file" id="preview">
+            <img id="img" src="" onerror="this.style.opacity=0">
+          </label>
+          <div class="settings bottom">
+            <input min="-10" max="10" type="range" id="offset" @input="setoffset">
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  <script>
+    const getID = id => document.getElementById(id)
+
+    new Vue({
+      el: '#card',
+      data: {
+        lvl: 5,
+        adm: 'Mng',
+        clas: 'SS',
+        month: 1,
+        year: 25,
+        code: 177013,
+        owner: 'user',
+      },
+      methods: {
+        setoffset: function () {
+          getID('img').style.right = `${getID('offset').value}px`
+        },
+        image: function () {
+          getID('img').style.opacity = 1
+          getID('img').src = URL.createObjectURL(event.target.files[0]);
+          setTimeout(() => {
+            getID('offset').value = 0
+            getID('offset').min = getID('img').clientWidth / -2
+            getID('offset').max = getID('img').clientWidth / 2
+          }, 10)
+        }
+      }
+    })
+
+    function draw() {
+      var canvas = document.createElement('canvas')
+      canvas.width = 500; canvas.height = 500;
+      var ctx = canvas.getContext('2d');
+      var img = new Image()
+      console.log(getID('img').src)
+      img.src = getID('img').src
+      ctx.drawImage(img, 0, 0, img.width, img.height);
+      document.querySelector('body').appendChild(canvas)
+    }
+
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Roguelike</title>
+  <style>
+    body,
+    html {
+      background-color: #333;
+      color: #fff;
+    }
+    #map{
+      display: grid;
+      width: 12.5em;
+      height: 12.5em;
+      grid-template-columns: repeat(5, 2.5em);
+      grid-template-rows: repeat(5, 2.5em);
+      grid-column-gap: 0.25em;
+      grid-row-gap: 0.25em;
+    }
+    
+    .tile{
+      background-color: #888;
+      text-align: center;
+    }
+    .map{
+      width: 2em;
+      height: 2em;
+      padding: 0.25em;
+    }
+  </style>
+  <link rel="stylesheet" href="background.css">
+</head>
+
+<body>
+  <div class="bg-animation">
+    <div id="stars"></div>
+    <div id="stars2"></div>
+    <div id="stars3"></div>
+    <div id="stars4"></div>
+  </div>
+  <script>
+    function getID(id){
+      return document.getElementById(id)
+    }
+    function random(min, max) {
+      if (max == undefined) {
+        [max, min] = [min, 0]
+      }
+      if (min > max) {
+        [min, max] = [max, min]
+      }
+      return Math.floor(Math.random() * (max - min + 1)) + min
+    }
+    
+    const entities = new Map([
+      ['wall', ['wall', 'wall', 0, 0, 0, 0, 0, 0, ['wall']]],
+      ['chest', ['item', 'chest', 0, 0, 0, 0, 0, 0, ['chest']]],
+      ['scp-001', ['enemy', '001', 1, 1, 1, 1, 1, 1, ['unknow']]]
+    ])
+
+    function floor(height, width){
+      let floor = []
+      for (let y = 0; y < height; y++) {
+        let fill = []
+        for (let x = 0; x < width; x++) {
+          fill.length++
+        };
+        floor.push(fill)
+      }
+      return floor;
+    }
+    function entit(height, width, ent) {
+      let e = []
+      for (let y = 0; y < height; y++) {
+        let fill = []
+        for (let x = 0; x < width; x++) {
+          fill.length++
+        };
+        e.push(fill)
+      }
+
+      ent.forEach((val) => {
+        e[val[2]][val[1]] = new Entity(entities.get(val[0]))
+      })
+      return e;
+    }
+
+    class Entity {
+      type = 'item'
+      name = 'example'
+      hp = 0
+      dmg = 0
+      mSpeed = 0
+      range = 0
+      delay = 0
+      sSpeed = 0
+      ability = []
+      constructor(stats, x, y) {
+        this.type = stats[0]
+        this.name = stats[1]
+        this.hp = stats[2]
+        this.dmg = stats[3]
+        this.mSpeed = stats[4]
+        this.range = stats[5]
+        this.delay = stats[6]
+        this.sSpeed = stats[7]
+        this.ability = stats[8]
+        this.x = x
+        this.y = y
+      }
+    }
+
+    class Room {
+      constructor(width, height, type, entity){
+        this.meta = {
+          width: width,
+          height: height,
+          type: type,
+        }
+        this.entity = entit(height, width, entity);
+        this.floor = floor(height, width)
+      }
+    }
+
+    const rooms = [new Room(9,3,'room',[['chest',4,1], ['wall', 1,1]]), new Room(9,9,'room',[['chest',2,2], ['scp-001',5,4]])]
+
+    var map = [], size = 5;
+    for (let y = 0; y < size; y++) {
+      let yfill = []
+      for (let x = 0; x < size; x++) {
+        yfill.length++
+      };
+      map.push(yfill)
+    }
+
+    map[parseInt(size / 2)][parseInt(size / 2)] = new Room(9,3,'spawn',[])
+    map[0][0] = rooms[0]
+
+    console.log(map)
+    
+    draw('map')
+    function draw(target) {
+      switch (target){
+        case 'map':
+          let drawMap = '<div id="map">'
+          for (let y = 0; y < size; y++) {
+            for (let x = 0; x < size; x++) {
+              let inner = map[x][y];
+              if(map[x][y] == undefined){ inner = '' }
+              else{ inner = inner.meta.type }
+              drawMap += '<div class="tile map">'+inner+'</div>'
+            };
+          }
+            
+          document.write(drawMap+'</div>')
+          break;
+        case 'room':
+          let drawMap = '<div id="map">'
+          for (let y = 0; y < size; y++) {
+            for (let x = 0; x < size; x++) {
+              let inner = map[x][y];
+              drawMap += '<div class="tile floor">'+inner+'</div>'
+            };
+          }
+          break;
+      }
+    }
+    
+    
+  </script>
+</body>
+
+</html>

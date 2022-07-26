@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Pong - PvP/PvE</title>
+        <meta charset="utf-8">
+        <link href="style.css" rel="stylesheet">
+    </head>
+    <body>
+        <div id="top">
+            <div class="tops">
+                <span style="font-weight: bold; color: blue; text-shadow: white 1px 1px 0px, white -1px 1px 
+                0px, white -1px -1px 0px, white 1px -1px 0px ;">P1</span>: <span id="p1ai">playable</span>
+            </div>
+            <div class="tops">
+                <strong><span id="min">0</span>:<span id="sec">00</span></strong>
+            </div>
+            <div class="tops">
+                <span style="font-weight: bold; color: red; text-shadow: white 1px 1px 0px, white -1px 1px 
+                0px, white -1px -1px 0px, white 1px -1px 0px ;">P2</span>: <span id="p2ai">playable</span>
+            </div>
+        </div>
+        <div id="playground">
+            <div class="player" id="p1"></div>
+            <div class="player" id="p2"></div>
+            <div id="ball"></div>
+        </div>
+        <div id="info">
+            <div style="text-align: left;">
+                <span style="font-weight: bold; color: blue; text-shadow: white 1px 1px 0px, white -1px 1px 
+                0px, white -1px -1px 0px, white 1px -1px 0px ;">P1</span>:
+                Point: <span id="p1_p">0</span> 
+            </div>
+            <div>
+                <span style="font-weight: bold;">Ball</span>: 
+                Speed: <span id="ball_speed">1</span>
+            </div>
+            <div style="text-align: right;">
+                <span style="font-weight: bold; color: red; text-shadow: white 1px 1px 0px, white -1px 1px 
+                0px, white -1px -1px 0px, white 1px -1px 0px ;"">P2</span>:
+                Point: <span id="p2_p">0</span>
+            </div>
+        </div>
+        <div id="panel">
+            <div id="win">
+                <span style="font-size: 30px; font-weight: bold;">Game:</span>
+                <p id="end">
+                    the match has 3 rounds, then the game is over and one of the players win
+                </p>
+                Controls:
+                P1: W S | P2: Up Down
+                <p id="start">
+                    *press <strong>Space</strong> to start game*
+                </p>
+            </div>
+            <div id="lose" style="display: none;"> 
+                
+            </div>
+            <div id="tie" style="display: none;"> 
+                
+            </div>
+            <div id="settings">
+                Game end:
+                <select class="input" id="mode" onchange="to_win()">
+                    <option value="0">best of</option>
+                    <option value="1">advantage of</option>
+                    <option value="2">time limit</option>
+                    <option value="3">endless</option>
+                </select>
+                <input class="input" id="points" type="number" value="3" onchange="to_win()" style="width: 50px;">
+                <div style="padding-top: 5px; font-size: 15px;">Tip: <span id="tip">default game</span></div>
+            </div>
+            <div id="AI">
+                <input type="checkbox" id="p1_AI" style="float: left; transform: scale(2); margin-left: 20px; margin-top: 8px;" onchange="p1_ai()">
+                AI level:<select class="input" id="lvl" onchange="level()">
+                    <option value="0">NOOB</option>
+                    <option value="1">Normal</option>
+                    <option value="2">Impossible</option>
+                </select> 
+                <input type="checkbox" id="p2_AI" style="float: right; transform: scale(2); margin-right: 20px; margin-top: 8px;" onchange="p2_ai()">
+            </div>
+        </div>
+        <script src="script.js"></script>
+    </body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            body{
+                background-color: #444;
+            }
+            .tile{
+                background-color: #888;
+                background-image: url(tile.png);
+                background-size: 100%;
+                width: 128px;
+                height: 128px;
+                animation: unhover 0.25s 1;
+                align-self: center;
+                justify-self: center;
+            }
+            .tile:hover{
+                margin: -2px;
+                padding: 2px;
+                box-shadow: 0px 0px 5px black;
+                animation: hover 0.25s 1;
+                z-index: 9999999999999;
+            }
+            #grid{
+                display: grid;
+                grid-template-columns: repeat(1, min-content);
+                grid-template-rows: repeat(1, min-content);
+                padding-left: 50%;
+                padding-top: 50px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="units">
+            
+        </div>
+        <div id="grid"></div>
+        <script src="script.js"></script>
+    </body>
+</html>

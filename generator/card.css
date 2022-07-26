@@ -1,0 +1,172 @@
+/*v*/
+#simv{
+    float: right;
+    position: relative;
+    width: 75px;
+    height: auto;
+    margin: 20px;
+    bottom: 70px;
+    right: 20px;
+}
+#imgv{
+    position: relative;
+    margin: 38px;
+    margin-top: 28px;
+    border: black 2px solid;
+    border-radius: 10px;
+    width: 320px;
+    height: 320px;
+    margin-bottom: 25px;
+    background-color: black;
+    text-align: center;
+}
+#lvlv{
+    position: relative;
+    margin-left: 45px;
+    font-size: 20px;
+}
+#ownerv{
+    position: relative;
+    margin-left: 45px;
+    font-size: 20px;
+
+}
+#infov{
+    position: relative;
+    font-size: 17px;
+    top: 60px;
+    left: 5px;
+}
+#qrv{
+    position: relative;
+    float: left;
+    top: 55px;
+}
+#barv{
+    margin: 20% 0px;
+    position: relative;
+    transform: rotate(-90deg);
+    left: 135px;
+    bottom: 285px;
+}
+#cardv{
+    float: right;
+    display: none;
+    margin-right: 30%;
+}
+#framev{
+    position: relative;
+}
+
+/*h*/
+#simh{
+    position: relative;
+    width: 75px;
+    height: auto;
+    float: left;
+    top: 60px;
+    left: 5px;
+}
+#imgh{
+    position: relative;
+    float: right;
+    bottom: 156px;
+    height: 250px;
+    width: auto;
+    overflow: hidden;
+    max-width: 300px;
+    border-left: black 2px solid;
+    background-color: black;
+    text-align: center;
+}
+#fronth{
+    position: relative;
+    top: 40px;
+    font-size: 22px;
+}
+#lvlh{
+    position: relative;
+
+}
+#ownerh{
+    position: relative;
+    top: 10px;
+    left: 15px;
+}
+#idh{
+    position: relative;
+    top: 10px;
+    left: 15px;
+
+}
+#codeh{
+    position: relative;
+    top: 10px;
+    left: 20px;
+
+}
+#sech{
+    position: relative;
+    top: 10px;
+    left: 25px;
+
+}
+#validh{
+    position: relative;
+
+}
+#adminh{
+    position: relative;
+
+}
+#qrh{
+    position: relative;
+    left: 5px;
+    top: 50px;
+}
+#barh{
+    position: relative;
+    top: 90px;
+    float: right;
+    right: 10px;
+}
+#backh{
+    font-size: 22px;
+    line-height: 30px;
+}
+#infoh{
+    position: relative;
+    float: left;
+    top: 60px;
+    left: 25px;
+}
+#frameh{
+    position: relative;
+
+}
+#cardh{
+    float: right;
+    margin-right: 30%;
+}
+.card{
+    width: max-content;
+    height: max-content;
+    border:black 2px solid;
+    border-radius: 25px;
+    float: left;
+    margin: 10px;
+    background-color: #fff;
+}
+.black{
+    padding-top: 20px;
+    width: 100%;
+    height: 20px;
+    color: white;
+    background-color: black;
+    position: relative;
+    text-align: center;
+    font-weight: bold;
+}
+.imgtopmargin{
+    margin-top: 75px;
+}

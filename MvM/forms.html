@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>Statystyki</title>
+</head>
+<body>
+    <h2>
+        Przeciwnicy
+    </h2>
+    <input type="text" placeholder="nazwa">
+    <br>
+    <input id="hp" type="range" max="8" value="1" min="1"  onchange="zmiana(this)">
+    HP: <span id="hpnow">50</span><br>
+    <input id="dmg" type="range" max="8" value="1" min="1" aria-multiline="0" onchange="zmiana(this)">
+    DMG: <span id="dmgnow">1</span><br>
+    <input id="sp" type="range" max="8" value="1" min="1" aria-multiline="0" onchange="zmiana(this)">
+    Speed: <span id="spnow">1</span><br>
+    <p><input id="left" type="range" max="10" value="7" min="0" readonly onchange="zmiana(this)"></p>
+    Pozostałem punkty: <span id="leftnow">1</span><br>
+
+    <script>
+        var can = false;
+        function zmiana(ths){
+            console.log("zmiana", ths)
+            hp = document.getElementById("hp").value*1
+            dmg = document.getElementById("dmg").value*1
+            sp = document.getElementById("sp").value*1
+            left = document.getElementById("left").value*1
+
+            if(10-hp-dmg-sp < 0){
+                if(ths.id == "hp"){
+                    while(hp+dmg+sp > 10){
+                        dmg--
+                        if(hp+dmg+sp == 9)break
+                        sp--
+                        if(hp+dmg+sp == 9)break
+                    }
+                }
+                if(ths.id == "dmg"){
+                    while(hp+dmg+sp > 10){
+                        hp--
+                        if(hp+dmg+sp == 9)break
+                        sp--
+                        if(hp+dmg+sp == 9)break
+                    }
+                }
+                if(ths.id == "sp"){
+                    while(hp+dmg+sp > 10){
+                        hp--
+                        if(hp+dmg+sp == 9)break
+                        dmg--
+                        if(hp+dmg+sp == 9)break
+                    }
+                }
+            }
+            if(hp > 0 || dmg > 1 || sp > 1){
+                left = 10-hp-dmg-sp
+            }
+            if(hp+dmg+sp == 10){can = true}
+
+            console.log(hp, dmg, sp, left)
+            document.getElementById("hp").value = hp
+            document.getElementById("dmg").value = dmg
+            document.getElementById("sp").value = sp
+            document.getElementById("left").value = left
+
+            document.getElementById("hpnow").innerText = hp*50
+            document.getElementById("dmgnow").innerText = dmg
+            document.getElementById("spnow").innerText = sp
+            document.getElementById("leftnow").innerText = left
+
+            
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html>
+    <head> 
+        <title>License to have Lolis</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="panels.css">
+        <link rel="stylesheet" href="card.css">
+        <link rel="stylesheet" href="css/fontello.css">
+        <style>
+            body{
+                background-color: #222;
+                font-family: Arial, Helvetica, sans-serif;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="up">
+
+        </div>
+
+        <div class="left">
+            <hr>
+            <input title="Your nickname" name="name" id="owner" class="inputs" type="text" placeholder="owner: Nickname"><br>
+            <input title="XXX" name="code" class="inputs" type="number" placeholder="code [000-999]" id="code"><br>
+            <input title="XXXX-XXXX-XXXX" name="idcode" class="inputs" type="text" placeholder="ID [0-9 A-Z]{12}" id="idcode"><br>
+            <div class="inputs">
+                <input title="month" type="number" value="1" name="date" id="mon" style="width: 50px;"> /
+                <input title="year" type="number" value="25" name="date" id="year" style="width: 50px;">
+            </div>
+            <hr>
+            <select title="Security level" class="inputs" id="sec">
+                <option></option>
+                <optgroup label="= Security = ">
+                    <option>L1</option>
+                    <option>L2</option>
+                    <option>L3</option>
+                    <option>L4</option>
+                    <option>L5</option>
+                </optgroup>
+            </select><br>
+            <select title="Administrator" class="inputs" id="adm">
+                <option></option>
+                <optgroup label=" = Administrator = ">
+                    <option>Asuna</option>
+                    <option>Aqua</option>
+                    <option>Raphtalia</option>
+                    <option>Holo</option>
+                    <option>ZeroTwo</option>
+                    <option>Megumin</option>
+                    <option>Rem</option>
+                    <option>Emilia</option>
+                    <option>Shinobu </option>
+                    <option>Mai</option>
+                    <option>*Your Type*</option>
+                </optgroup>
+            </select><br>
+            <span id="yourtype"></span>
+            <select class="inputs" id="lvl">
+                <option></option>
+                <optgroup label=" = Class = ">
+                    <option>SS</option>
+                    <option> S</option>
+                    <option> A</option>
+                    <option> B</option>
+                    <option> C</option>
+                    <option> D</option>
+                    <option> E</option>
+                    <option> F</option>
+                </optgroup>
+            </select>
+            <hr>
+            <div id="ho" class="choose" id="ho" style="transform: rotateY(180deg); left: 10px;">
+                <i class="demo-icon icon-id-card-o"></i>
+            </div>
+            <div id="ver" class="choose" id="ver">
+                <i class="demo-icon icon-id-badge"></i>
+            </div>
+            <div class="imgtopmargin">
+                <hr>
+                <label>
+                    <div class="inputs" style="text-align: center; background-color: #efefef;">Choose IMG</div>
+                    <input style="display: none;" type="file" id="preview">
+                </label>
+            </div>
+            <input type="range" min="-1" max="1" class="range" value="0" id="offset" style="transform: rotate(180deg); width: min-content;">
+            <hr>
+        </div>
+        <div class="right">
+            <hr>
+            Suport me ❤<br>
+            <div id="support">
+                <a href=""><i title="Support my project 💙" class="icon-paypal"></i></a>
+                <a href=""><i title="Follow me on youtube 💖" class="icon-youtube-play"></i></a>
+                <i id="share" title="Share it to someone 🤍" class="icon-forward"></i>
+                
+            </div>
+            <hr>
+        </div>
+        <div class="down">
+            
+        </div>
+        <div id="cardv">
+            <div class="card" style="width: 400px; height: 550px;" >
+                <div style="top: 0px; border-radius: 20px 20px 0px 0px;" class="black"></div>
+                <div style="height: 422px;">
+
+                    <div id="imgv" style="overflow: hidden;">
+                        <img id="framev" alt="Your Loli" width="auto" height="100%" style=" border: black 0px solid; border-radius: 8px;">
+                    </div>
+                    <span id="lvlv">Class: -</span><br>
+                    <span id="ownerv">Owner: -</span><br>
+                    <img id="simv" alt="sim" src="sim.jpg">
+                
+                </div>
+                <div style="bottom: 0px; height: 40px; border-radius: 0px 0px 20px 20px;" class="black"></div>
+            </div>
+            <div class="card" style="width: 400px; height: 550px;">
+                <div style="top: 0px; border-radius: 20px 20px 0px 0px;" class="black"></div>
+                <div style="height: 435px; padding-top: 15px;                 margin-left: 10px;
+                font-size: 20px;">
+                    
+                    <span id="idv">ID: 0000-0000-0000</span><br><br>
+                    <span id="codev">Code: 000</span><br><br>
+                    <span id="secv">Security: L0</span><br><br>
+                    <span id="validv">Valid: 01/25</span><br><br>
+                    <span id="adminv">ADM: NONE</span><br><br>
+                    <img id="qrv" src="qr.jpg" alt="QR">
+                    <p id="infov">
+
+                    </p>
+                    <img id="barv" src="barcode.gif" alt="barcode">
+
+                </div>
+                <div style="bottom: 0px; height: 40px;border-radius: 0px 0px 20px 20px;" class="black"></div>
+                </div>
+        </div>
+        <div id="cardh">
+            <div class="card" style="width: 600px; height: 350px;">
+                <div class="black" style="top: 0px; border-radius: 20px 20px 0px 0px;"></div>
+                <div style="height: 250px;">
+                    <div style="float: left; width: 150px;">
+                        <img id="simh" alt="sim" src="sim.jpg">
+                        <p id="infoh">
+
+                        </p>
+                    </div>
+                    <div id="fronth">
+                        <span id="lvlh">Class: -</span><br><br>
+                        <span id="validh">Valid: 01/25</span><br><br>
+                        <span id="adminh">Adm: NONE</span><br><br>
+                    </div>
+                    <div id="imgh">
+                    </div>
+
+                </div>
+                <div class="black" style="bottom: 0px; height: 40px;border-radius: 0px 0px 20px 20px;"></div>
+            </div><br>
+            <div class="card" style="width: 600px; height: 350px;">
+                <div class="black" style="top: 0px; border-radius: 20px 20px 0px 0px;"></div>
+                <div style="height: 250px;">
+                    <div id="backh">
+                        <span id="ownerh">Owner: -</span><br>
+                        <span id="idh">ID: 0000-0000-0000</span>
+                        <span id="codeh">Code: 000</span>
+                        <span id="sech">Security: L0</span>
+                    </div>
+                    <img id="qrh" src="qr.jpg" alt="QR">
+                    <img id="barh" src="barcode.gif" alt="barcode">
+
+                </div>
+                <div class="black" style="bottom: 0px; height: 40px;border-radius: 0px 0px 20px 20px;">LICENSE TO HAVE LOLIS</div>
+            </div>
+        </div>
+    </body>
+    <script src="script.js"></script>
+</html>

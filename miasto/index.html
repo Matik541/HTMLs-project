@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+  <meta charset="UTF-8">
+  <title> Miasto </title>
+  <style>
+    body,
+    html {
+      background-color: #333;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+    }
+
+    img {
+      width: 64px;
+      height: 64px;
+    }
+
+    img[src=""] {
+      opacity: 0;
+    }
+
+    #background {
+      display: grid;
+      grid-template-columns: repeat(16, 64px);
+      grid-template-rows: repeat(16, 64px);
+      width: calc(16 * 64px);
+      height: calc(16 * 64px);
+    }
+
+    #background,
+    #canvas {
+      top: 100px;
+    }
+
+    #kys {
+      top: 0;
+      height: 80px
+    }
+
+    textarea {
+      bottom: 0;
+    }
+
+    textarea,
+    #kys,
+    #background,
+    #canvas {
+      position: fixed;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  </style>
+</head>
+
+<body>
+  <button id="kys" onclick="kys()">Wygenerój rzekę</button>
+  <div id="background" style="background-color: green;">
+    <img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src=""
+      alt=""><img src="" alt=""><img src="" alt=""><img src="" alt=""><img src="" alt="">
+  </div>
+  <canvas id="canvas" width="1024" height="1024"></canvas>
+  <textarea rows="10" cols="100">
+
+  </textarea>
+  <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+  <script>
+    function kys() {
+      var tiles = []
+
+      fetch('./tiles.json').then(response => { return response.json(); }).then(data => {
+        for (let i = 0; i < $('img').length; i++) {
+          $('img')[i].src = ""
+        }
+        tiles = data
+        function setTile(where, what) {
+          tile = 6
+          tiles.forEach((v, k) => {
+            if (v.includes(what)) { return tile = k; }
+          })
+          if (tile < 100) { what = '0' + tile }
+          if (tile < 10) { what = '00' + tile }
+          return $('img')[where].src = `./img/tile${what}.png`;
+        }
+
+        let rr = Math.floor(Math.random() * 9) + 4
+        let river = [[rr, 0], [rr, 1]], askTiles = []
+        while ((river[river.length - 1])[1] != 16) {
+          let canGo = true, moves = [[1, 0], [0, -1], [-1, 0]], last = river.length - 1, r = Math.floor(Math.random() * moves.length);
+          let newMove = [river[last][0] - moves[r][0], river[last][1] - moves[r][1]]
+
+          if (river[last][1] == newMove[1] && river[last - 1][1] == newMove[1]) {
+            canGo = false
+          }
+
+          if (river.length > 3) {
+            if (river[last - 2][1] == newMove[1] - 1 && ((river[last - 1][1] == newMove[1] - 1 && river[last - 1][0] == newMove[0] - 1) || (river[last - 1][1] == newMove[1] - 1 && river[last - 1][0] == newMove[0] + 1)) && (river[last][0] == newMove[0] - 1 || river[last][0] == newMove[0] + 1)) { canGo = false; }
+          }
+
+          if (newMove[0] > 12 || newMove[0] < 4) { canGo = false; }
+
+          river.forEach((v) => {
+            if (v[0] == newMove[0] && v[1] == newMove[1]) {
+              canGo = false
+            }
+          })
+
+          if (canGo) {
+            river.push(newMove)
+          }
+        }
+
+        let rive = [river[0][0] - 16]
+
+        river.forEach(v => {
+          rive.push(v[0] + v[1] * 16)
+        })
+        rive.forEach(va => {
+          if (va < 0 || va > 256) { return; }
+          let neighbor = [false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false]
+          if (rive.includes(va - 33)) { neighbor[0] = true }
+          if (rive.includes(va - 32)) { neighbor[1] = true }
+          if (rive.includes(va - 31)) { neighbor[2] = true }
+          if (rive.includes(va - 17)) { neighbor[3] = true }
+          if (rive.includes(va - 16)) { neighbor[4] = true }
+          if (rive.includes(va - 15)) { neighbor[5] = true }
+          if (rive.includes(va - 02)) { neighbor[6] = true }
+          if (rive.includes(va - 01)) { neighbor[7] = true }
+          if (rive.includes(va + 01)) { neighbor[8] = true }
+          if (rive.includes(va + 02)) { neighbor[9] = true }
+          if (rive.includes(va + 17)) { neighbor[10] = true }
+          if (rive.includes(va + 16)) { neighbor[11] = true }
+          if (rive.includes(va + 15)) { neighbor[12] = true }
+          if (rive.includes(va + 33)) { neighbor[13] = true }
+          if (rive.includes(va + 32)) { neighbor[14] = true }
+          if (rive.includes(va + 31)) { neighbor[15] = true }
+
+          // console.log(neighbor)
+          let exit = 0
+          neighbor.forEach((v, k) => {
+            if (v) { exit += Math.pow(2, k) }
+          })
+          setTile(va, exit)
+          setTile(va - 1, exit * -1)
+          let isnt = true, isnt_ = true;
+          tiles.forEach((v, k) => {
+            if (v.includes(exit)) { isnt = false }
+            if (v.includes(exit * -1)) { isnt_ = false }
+          })
+          if (isnt) {
+            $('img')[va].src = './img/red.png';
+            setTimeout(() => {
+              let promp = prompt(`${exit}:`);
+              if (promp == 'q') {
+                window.open('./index.html', '_blank')
+              }
+              if (promp != null) {
+                tiles[promp].push(exit)
+                setTile(va, exit)
+              }
+              $('textarea')[0].innerText = JSON.stringify(tiles);
+              $('textarea')[0].select()
+              document.execCommand("copy");
+            }, 1000)
+          } if (isnt_) {
+            $('img')[va-1].src = './img/red.png';
+            setTimeout(() => {
+              let promp = prompt(`${exit*-1}:`);
+              if (promp == 'q') {
+                window.open('./index.html', '_blank')
+              }
+              if (promp != null) {
+                tiles[promp].push(exit*-1)
+                setTile(va-1, exit*-1)
+              }
+              $('textarea')[0].innerText = JSON.stringify(tiles);
+              $('textarea')[0].select()
+              document.execCommand("copy");
+            }, 1000)
+          }
+        })
+        rive = rive.slice(1, -1)
+
+        var ctx = document.getElementById('canvas').getContext('2d')
+        ctx.restore();
+        ctx.beginPath()
+        ctx.moveTo(river[0][0] * 64, river[0][1] * 64)
+        let riv = river.splice(1)
+        riv.forEach(v => {
+          ctx.lineTo(v[0] * 64, v[1] * 64)
+        })
+        ctx.stroke()
+
+      })
+    }
+  </script>
+</body>
+
+</html>

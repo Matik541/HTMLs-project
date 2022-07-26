@@ -1,0 +1,108 @@
+<style>
+    input{
+    border: none;
+}
+select{
+    white-space: nowrap;
+    border-radius: 2px;
+    box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+input[type="range"]{
+    margin: 5px;
+    width: 125px;
+}
+input[type=range]{
+    -webkit-appearance: none;
+}
+input[type=range]::-webkit-slider-runnable-track {
+    background: #fff;
+    height: 10px;
+    border: none;
+}
+input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 10px;
+    width: 10px;
+    background: #bbb;
+    margin-top: 0px;
+}
+input[type=range]:focus {
+    outline: none;
+}
+
+@keyframes color{
+    0%{border-bottom: 3px solid #888888}
+    100%{border-bottom: 3px solid #1e64ff;}
+}
+
+.inputs{
+    background-color: #fff;
+    font-size: 12px;
+    width: 125px;
+    margin: 5px;
+    padding: 1px;
+    border: none;
+    border-bottom: 3px #888 solid;
+}
+.inputs:hover{
+    animation: color 0.5s 1;
+    border: none;
+    border-bottom: 3px rgb(30, 100, 255) solid;
+}
+.left{
+    background-color: #888;
+    float: left;
+}
+.choose{
+    position: relative;
+    width: 40%;
+    padding: 5%;
+    float: left;
+    font-size: 40px;
+    text-align: center;
+}
+.right{
+    background-color: #888;
+    float: right;
+    text-align: center;
+}
+</style>
+<div class="left">
+    <hr>
+    <input title="Your nickname" name="name" id="owner" class="inputs" type="text" placeholder="owner: Nickname"><br>
+    <input title="XXX" name="code" class="inputs" type="number" placeholder="code [000-999]" id="code"><br>
+    <input title="XXXX-XXXX-XXXX" name="idcode" class="inputs" type="text" placeholder="ID [0-9 A-Z]{12}" id="idcode"><br>
+    <div class="inputs">
+    <input title="month" type="number" value="1" name="date" id="mon" style="width: 50px;"> /
+    <input title="year" type="number" value="25" name="date" id="year" style="width: 50px;">
+    </div>
+    <hr>
+    <select title="Security level" class="inputs" id="sec">        <option></option>      <optgroup label="= Security = ">
+    <option>L1</option>
+    </optgroup>            </select><br>
+    <hr>
+    <div id="ho" class="choose" id="ho" style="transform: rotateY(180deg); left: 10px;">
+    <i class="demo-icon icon-id-card-o"></i>
+    </div>
+    <div id="ver" class="choose" id="ver">
+    <i class="demo-icon icon-id-badge"></i>
+    </div>
+    <div class="imgtopmargin">
+    <hr>
+    <label><div class="inputs" style="text-align: center; background-color: #efefef;">Choose IMG</div>              <input style="display: none;" type="file" id="preview">          </label>
+    </div>
+    <input type="range" min="-1" max="1" class="range" value="0" id="offset" style="transform: rotate(180deg); width: min-content;">
+    <hr>
+    </div>
+    <div class="right">
+    <hr>
+    Suport me ❤<br>
+    <div id="support">
+    <a href=""><i title="Support my project 💙" class="icon-paypal">🟦</i></a>
+    <a href=""><i title="Follow me on youtube 💖" class="icon-youtube-play">🟥</i></a>
+    <i id="share" title="Share it to someone 🤍" class="icon-forward">⬜</i>
+    </div>
+    <hr>
+    </div>

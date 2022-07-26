@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <title>MvM</title>
+    <style>
+        body{
+            background-color: #333;
+        }
+        #grid{
+            display: grid;
+            grid-template-rows: repeat(1, min-content);
+            grid-template-columns: repeat(1, min-content);
+            background-color: #337700;
+            width: fit-content;
+        }
+        #units{
+            display: grid;
+            grid-template-rows: repeat(1, min-content);
+            grid-template-columns: repeat(10, min-content);
+            margin-bottom: 1cm;
+        }
+        .tile{
+            width: 2cm;
+            height: 2.5cm;
+        }
+        .tile:hover{
+            background-color: #448811;
+        }
+        .select{
+            width: 2cm;
+            height: 2cm;
+            background-color: #666;
+        }
+        .enemy{
+            width: 1cm;
+            height: 1.5cm;
+            background-color: red;
+            border-radius: 1cm;
+            position: absolute;
+            right: 0;
+        }
+        .line{
+            width: auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="units">
+        <div class="select" id="mine" style="background-color: #888;" onclick="select(this)"></div>
+        <div class="select" id="ballista" onclick="select(this)"></div>
+        <div class="select" id="archer" onclick="select(this)"></div>
+        <div class="select" id="wizard" onclick="select(this)"></div>
+        <div class="select" id="sheald" onclick="select(this)"></div>
+        <div class="select" id="trap" onclick="select(this)"></div>
+        <div style="float: right; margin-left: 6cm;" class="select" id="delete" onclick="select(this)"></div>
+    </div>
+    <div id="grid"></div>
+    <input type="button" value="summon" onclick="summon()">
+    <script src="../main.js"></script>
+</body>
+</html>

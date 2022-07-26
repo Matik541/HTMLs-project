@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Najgłupszy City Builder na świecie</title>
+        <meta charset="UTF-8">
+        <style>
+            body{
+                background-color: #333;
+            }
+            .tile{
+                background-color: #666;
+                background-size: 100%;
+                width: 50px;
+                height: 50px;
+                align-self: center;
+                justify-self: center;
+            }
+            .tile:hover{
+                background-color: #777;
+                margin: -2px;
+                padding: 2px;
+                box-shadow: 0px 0px 5px black;
+                z-index: 9999999999999;
+            }
+            .fill{
+                background-color: #666;
+                background-size: 100%;
+                width: 50px;
+                height: 50px;
+                margin: 2.5px 0px;
+                align-self: center;
+                justify-self: center;
+            }
+            #grid{
+                float: left;
+                display: grid;
+                grid-template-columns: repeat(10, min-content);
+                grid-template-rows: repeat(10, min-content);
+            }
+            #tiles{
+                align-self: flex-start;
+                width: 50px;
+                padding: 2px 5px;
+                min-height: 50px;
+                opacity: 0;
+                display: grid;
+                grid-template-rows: repeat(5, min-content);
+            }
+            #stats{
+                width: 50px;
+                padding: 2.5px 5px;
+                min-height: 50px;
+                display: grid;
+                align-self: flex-end;
+            }
+            #boost{
+                width: 50px;
+                padding: 2.5px 5px;
+                min-height: 100px;
+                display: grid;
+                align-self: center;
+                font-size: 30px;
+                text-align: center;
+            }
+            #controls{
+                float: left;
+                display: grid;
+                grid-template-rows: repeat(3, auto);
+                background-color: #222;
+                height: 500px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="grid"></div>
+        <div id="controls">
+            <div id="tiles">
+                <div title='shortcut -> Button 1' id="home" style="background-image: url(./home0.png);" class="fill" onclick="tile_type(this)"></div>
+                <div title='shortcut -> Button 2' id="mine" style="background-image: url(./mine.png);" class="fill" onclick="tile_type(this)"></div>
+                <div title='shortcut -> Button 3' id="wood" style="background-image: url(./wood.png);" class="fill" onclick="tile_type(this)"></div>
+                <div title='shortcut -> Button 4' id="shop" style="background-image: url(./shop.png);" class="fill" onclick="tile_type(this)"></div>
+                <div title='shortcut -> Button 5' id="blank" style="background-image: url();" class="fill" onclick="tile_type(this)">clear</div>
+            </div>
+            <div id="boost">
+                <div title='shortcut -> Button Q' id="tree" class="fill" onclick="tile_boost(this)">🌳</div>
+                <div title='shortcut -> Button W' id="ore" class="fill" onclick="tile_boost(this)">💎</div>
+            </div>
+            <div id="stats">
+                <div title='shortcut -> Button 0' id="shop" style="background-image: url(./happy.png);" class="fill" onclick="tile_status()"></div>
+            </div>
+        </div>
+        Gold: <span id="gold"></span><br>
+        People: <span id="people"></span><br>
+        Wood: <span id="timber"></span><br>
+        Stone: <span id="stone"></span><br><br>
+        <input type="number" title="row" value="10" id="row" onchange="grid_size()"><br>
+        <input type="number" title="col" value="10" id="col" onchange="grid_size()">
+        <script src="index.js"></script>
+    </body>
+</html>
